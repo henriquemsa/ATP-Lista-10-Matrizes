@@ -1,0 +1,91 @@
+/*
+ * Faça um programa que leia duas matrizes com os mesmos números de linhas e colunas, faça a soma das mesmas e imprima na tela a matriz resultante
+ */
+
+using System;
+
+namespace Exercicio1
+{
+    class Program
+    {
+        // Método para somar duas matrizes e retornar uma matriz resultado
+        static int[,] SomaMatriz(int[,] matA, int[,] matB, int linhas, int colunas)
+        {
+            int[,] matriz = new int[linhas, colunas];
+
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    matriz[i, j] = matA[i, j] + matB[i, j];
+                }
+            }
+
+            return matriz;
+        }
+
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            int linhas, colunas;
+
+            // Recebendo tamanho da matriz
+            Console.WriteLine();
+            Console.Write(" Entre com o número de linhas da matriz: ");
+            linhas = int.Parse(Console.ReadLine());
+            Console.Write(" Entre com o número de colunas da matriz: ");
+            colunas = int.Parse(Console.ReadLine());
+
+            // Criando matrizes com dimensões fornecidas pelo usuário
+            int[,] matA = new int[linhas, colunas];
+            int[,] matB = new int[linhas, colunas];
+            int[,] matR = new int[linhas, colunas];
+
+            // Preenchendo a matriz 'matA'
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.Write(" Entre com o valor a ser inserido na posição [{0},{1}] da matriz A: ", (i + 1), (j + 1));
+                    matA[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Preenchendo a matriz 'matB'
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.Write(" Entre com o valor a ser inserido na posição [{0},{1}] da matriz B: ", (i + 1), (j + 1));
+                    matB[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Chamando método 'SomaMatriz'
+            matR = SomaMatriz(matA, matB, linhas, colunas);
+
+            // Imprimindo matriz resultante
+            Console.Clear();
+            Console.WriteLine();
+
+            Console.WriteLine(" Matriz resultante: ");
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    Console.Write(" [{0}]", matR[i, j]);
+                }
+
+                Console.WriteLine();
+            }
+
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();
+        }
+    }
+}
