@@ -1,0 +1,68 @@
+/*
+ * Faça um programa que carregue uma matriz 6 x 3, calcule e mostre:
+ * - o maior elemento da matriz e sua respectiva posição, ou seja, linha e coluna.
+ * - o menor elemento da matriz e sua respectiva posição, ou seja, linha e coluna.
+ */
+
+using System;
+
+namespace Exercicio2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            int[,] matriz = new int[6, 3];
+            int maior, menor;
+            int[] posicaoMaior = new int[2];
+            int[] posicaoMenor = new int[2];
+
+            // Preenchendo a matriz
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.Write(" Entre com o valor a ser inserido na posição [{0},{1}] da matriz: ", (i + 1), (j + 1));
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Inicializando valores de 'maior' e 'menor' com os valores da primeira posição da matriz
+            maior = matriz[0, 0];
+            menor = matriz[0, 0];
+
+            // Percorrendo a matriz e verificando os maiores e menores valores
+            for (int i = 0; i < 6; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (matriz[i, j] > maior)
+                    {
+                        maior = matriz[i, j];
+                        posicaoMaior[0] = i + 1;
+                        posicaoMaior[1] = j + 1;
+                    }
+
+                    if (matriz[i, j] < menor)
+                    {
+                        menor = matriz[i, j];
+                        posicaoMenor[0] = i + 1;
+                        posicaoMenor[1] = j + 1;
+                    }
+                }
+            }
+
+            // Imprimindo resultados
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" O maior elemento da matriz é {0} e ele se encontra na posição [{1}, {2}] da matriz.", maior, posicaoMaior[0], posicaoMaior[1]);
+            Console.WriteLine(" O menor elemento da matriz é {0} e ele se encontra na posição [{1}, {2}] da matriz.", menor, posicaoMenor[0], posicaoMenor[1]);
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();
+        }
+    }
+}
