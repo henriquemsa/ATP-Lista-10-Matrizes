@@ -1,0 +1,59 @@
+/*
+ * Faça um programa que carregue uma matriz 20 x 10 com números inteiros e some cada uma das colunas. armazenando o resultado da soma em um vetor.
+ */
+
+using System;
+
+namespace Exercicio3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            int linhas = 10, colunas = 5,soma = 0;
+            int[,] matriz = new int[linhas, colunas];
+            int[] vetor = new int[colunas];
+            
+
+            // Preenchendo a matriz
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.Write(" Entre com o valor a ser inserido na posição [{0}, {1}] da matriz: ", (i + 1), (j + 1));
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Somando os elementos de cada coluna e armazenando o resultado em 'vetor'
+            for (int i = 0; i < linhas; i++)
+            {
+                for (int j = 0; j < colunas; j++)
+                {
+                    soma += matriz[i, j];
+                }
+
+                if (i < colunas)
+                {
+                    vetor[i] = soma;
+                }
+            }
+
+            // Imprimindo resultados
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" Vetor soma: ");
+            // Imprimindo vetor
+            for (int i = 0; i < vetor.Length; i++)
+            {
+                Console.Write(" [{0}]", vetor[i]);
+            }
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();
+        }
+    }
+}
