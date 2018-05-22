@@ -1,0 +1,71 @@
+/*
+ * Faça um método que calcule o maior elemento de uma matriz quadrada m x m.
+ */
+
+using System;
+
+namespace Exercicio4
+{
+    class Program
+    {
+        // Método para calcular e retornar o maior elemento de uma matriz
+        static int MaiorElemento(int[,] matriz, int m)
+        {
+            // Inicializando variável maior com a primeira posição da matriz
+            int maior = matriz[0,0];
+
+            // Percorrendo a matriz em busca do maior elemento
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (matriz[i, j] > maior)
+                    {
+                        maior = matriz[i, j];
+                    }
+                }
+            }
+
+            // Retorna o maior elemento
+            return maior;
+        }
+
+        static void Main(string[] args)
+        {
+            // Declaração de variáveis
+            int m, maior;
+
+            // Recebendo dimensão da matriz do usuário
+            Console.Clear();
+            Console.WriteLine();
+            Console.Write(" Entre com um número inteiro para definir as dimensões da matriz quadrada: ");
+            m = int.Parse(Console.ReadLine());
+
+            // Criando matriz quadrada com dimensões definidas pelo usuário
+            int[,] matriz = new int[m, m];
+
+            // Preenchendo a matriz
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.Write(" Entre com o valor a ser inserido na posição [{0}, {1}] da matriz: ", (i + 1), (j + 1));
+                    matriz[i, j] = int.Parse(Console.ReadLine());
+                }
+            }
+
+            // Chamando o método 'MaiorElemento' e guardando o valor retornado na variável 'maior'
+            maior = MaiorElemento(matriz, m);
+
+            // Imprimindo resultados
+            Console.Clear();
+            Console.WriteLine();
+            Console.WriteLine(" O maior elemento da matriz é: " + maior);
+            Console.WriteLine();
+            Console.WriteLine(" Pressione qualquer tecla para sair...");
+            Console.ReadKey();
+        }
+    }
+}
